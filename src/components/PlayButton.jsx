@@ -22,6 +22,7 @@ export const PlayButton = () => {
 
   const onClickButton = () => {
     setAudioState(!audioState);
+    setRoll(!roll);
     console.log(audioState);
   };
 
@@ -32,6 +33,50 @@ export const PlayButton = () => {
       pause();
     }
   }, [audioState]);
+
+  useEffect(() => {
+    if (roll === true) {
+      document
+        .querySelector(`.rotate`)
+        .animate(
+          [{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }],
+          {
+            duration: 10000,
+            easing: "linear",
+            iterations: Infinity
+          }
+        );
+      console.log("回転スタート");
+    } else if (roll === false) {
+      document
+        .querySelector(`.rotate`)
+        .animate(
+          [{ transform: "rotate(0deg)" }, { transform: "rotate(0deg)" }],
+          {
+            duration: 1000,
+            easing: "linear",
+            iterations: Infinity
+          }
+        );
+      console.log("回転ストップ");
+    }
+  }, [roll]);
+
+  const style1 = {
+    marginTop: "20px",
+    height: "200px",
+    width: "200px",
+    backgroundColor: "red",
+    borderRadius: "50%",
+    textAlign: "center"
+  };
+
+  const style2 = {
+    height: "20px",
+    width: "20px",
+    backgroundColor: "black",
+    borderRadius: "50%"
+  };
 
   return (
     <>
@@ -86,13 +131,10 @@ export const PlayButton = () => {
             </IconButton>
           </Box>
         </Box>
-        <CardMedia
-          component="img"
-          sx={{ width: 151 }}
-          image="/static/images/cards/live-from-space.jpg"
-          alt="Live from space album cover"
-        />
-      </Card>{" "}
+      </Card>
+      <div style={style1} class="item rotate">
+        <div style={style2}></div>
+      </div>
     </>
   );
 };
