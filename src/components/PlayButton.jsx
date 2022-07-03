@@ -12,36 +12,29 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const PlayButton = () => {
   const [play, { stop, pause }] = useSound(Music);
   const theme = useTheme();
   const [audioState, setAudioState] = useState(false);
+  const [roll, setRoll] = useState(false);
 
   const onClickButton = () => {
     setAudioState(!audioState);
+    console.log(audioState);
+  };
+
+  useEffect(() => {
     if (audioState === true) {
       play();
     } else if (audioState === false) {
       pause();
     }
-  };
-
-  console.log(audioState);
+  }, [audioState]);
 
   return (
     <>
-      <Button variant="contained" onClick={() => setAudioState(true)}>
-        再生
-      </Button>
-      <Button variant="contained" onClick={() => setAudioState(false)}>
-        停止
-      </Button>
-      <Button variant="contained" onClick={() => pause()}>
-        一時停止
-      </Button>
-
       {/* muiのカード*/}
       <Card sx={{ display: "flex" }}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -77,9 +70,9 @@ export const PlayButton = () => {
             {/*切り替えシステム */}
             <IconButton aria-label="next" onClick={onClickButton}>
               {audioState ? (
-                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-              ) : (
                 <PauseIcon sx={{ height: 38, width: 38 }} />
+              ) : (
+                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
               )}
             </IconButton>
 
@@ -99,7 +92,7 @@ export const PlayButton = () => {
           image="/static/images/cards/live-from-space.jpg"
           alt="Live from space album cover"
         />
-      </Card>
+      </Card>{" "}
     </>
   );
 };
