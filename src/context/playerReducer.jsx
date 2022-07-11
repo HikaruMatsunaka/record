@@ -9,13 +9,16 @@ import {
   SET_SONGS_ARRAY
 } from "./types";
 
-export default (state, action) => {
+const playReducer = (state, action) => {
   switch (action.type) {
     case SET_SONGS_ARRAY:
       return {
         ...state,
         songs: action.data
       };
+    //const songsSet = (songArr) =>
+    //dispatch({ type: SET_SONGS_ARRAY, data: songArr });
+    // など、具体的なアクションが一致した後に、他の属性を指定できる。
     case SET_CURRENT_SONG:
       return {
         ...state,
@@ -41,3 +44,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default playReducer;

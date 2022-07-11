@@ -2,10 +2,13 @@
 //再生ボタン、スキップボタンなどなど
 
 import React, { useState, useEffect, useRef, useContext } from "react";
+
+//これなに？？
+//reactからcreateContext()を引っ張ってきたやーつ
 import playerContext from "../context/playerContext";
 
 function Controls() {
-  // Global State
+  //グローバルな状態を管理
   const {
     currentSong,
     songs,
@@ -23,11 +26,14 @@ function Controls() {
 
   const audio = useRef("audio_tag");
 
-  // self State
+  //音量のstate
   const [statevolum, setStateVolum] = useState(0.3);
+  //プログレスののstate？
   const [dur, setDur] = useState(0);
+  //再生時間のstate
   const [currentTime, setCurrentTime] = useState(0);
 
+  //再生時間
   const fmtMSS = (s) => {
     return (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + ~~s;
   };

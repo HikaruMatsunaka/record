@@ -23,6 +23,8 @@ const PlayerState = (props) => {
     playing: false,
     audio: null
   };
+
+  //第一引数にreducerを入れて、第二引数にstateの初期状態を入れる。
   const [state, dispatch] = useReducer(playerReducer, initialState);
 
   // Set songs array
