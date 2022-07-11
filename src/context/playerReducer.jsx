@@ -1,3 +1,6 @@
+//reducer
+//reducerでStore内のStateを更新する
+
 import {
   SET_CURRENT_SONG,
   TOGGLE_RANDOM,

@@ -1,3 +1,6 @@
+//具体的にactionを作る
+//actionはオブジェクト
+
 import React, { useReducer } from "react";
 import playerContext from "./playerContext";
 import playerReducer from "./playerReducer";
@@ -23,6 +26,7 @@ const PlayerState = (props) => {
   const [state, dispatch] = useReducer(playerReducer, initialState);
 
   // Set songs array
+  //アクションのオブジェクトを運んでいる
   const songsSet = (songArr) =>
     dispatch({ type: SET_SONGS_ARRAY, data: songArr });
   // Set playing state

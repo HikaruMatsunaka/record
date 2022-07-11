@@ -1,3 +1,5 @@
+//曲は、オブジェクトの配列で持つようになっている
+
 export const song_list = [
   {
     title: "Promenade Allegro giusto nel modo russico senza allegrezza ma",

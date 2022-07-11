@@ -1,3 +1,6 @@
+//固定配置のコントロール部分
+//再生ボタン、スキップボタンなどなど
+
 import React, { useState, useEffect, useRef, useContext } from "react";
 import playerContext from "../context/playerContext";
 
